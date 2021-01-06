@@ -14,14 +14,33 @@ class ContainerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    var screenSize = MediaQuery.of(context).size;
     return BlocProvider(
       create: (_) => ContainerCubit(context.read<Repository>()),
       child: Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: Container(
+          height: 65.0,
+          width: 65.0,
+          child: FittedBox(
+            child: Container(
+              margin: EdgeInsets.only(bottom: 8),
+              child: FloatingActionButton(
+                onPressed: () {},
+                child: Icon(
+                  Icons.contact_phone,
+                  color: Colors.white,
+                ),
+                // elevation: 5.0,
+              ),
+            ),
+          ),
+        ),
         bottomNavigationBar: BlocBuilder<ContainerCubit, ContainerState>(
             builder: (context, ContainerState state) {
           return BottomNavigationBar(
-            currentIndex: state.index, // this will be set when a new tab is tapped
+            currentIndex: state.index,
+            // this will be set when a new tab is tapped
             items: [
               BottomNavigationBarItem(
                 icon: new Icon(Icons.home),
@@ -32,7 +51,7 @@ class ContainerPage extends StatelessWidget {
                 label: 'Projects',
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.contact_page), label: 'Contact')
+                  icon: Icon(Icons.question_answer_rounded), label: 'Query')
             ],
             onTap: (index) => context.read<ContainerCubit>().pageTapped(index),
           );
@@ -46,7 +65,12 @@ class ContainerPage extends StatelessWidget {
                     Theme.of(context).primaryColorLight
                   ]),
                 ),
-                child: _getWidget(context, state));
+                child: SafeArea(
+                  child: Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: screenSize.width * 0.06),
+                      child: _getWidget(context, state)),
+                ));
           },
         ),
       ),
@@ -63,5 +87,4 @@ class ContainerPage extends StatelessWidget {
     else
       return HomePage();
   }
-
 }
