@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "314190876469",
+    "project_id": "flutter-web-6e44b",
+    "storage_bucket": "flutter-web-6e44b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314190876469:android:518155d603038201b7467c",
+        "android_client_info": {
+          "package_name": "com.ramesh.resume"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314190876469-avs8pf44sd3da4u8pt9s7m09pcq021cg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt062hA6192x_i4L0VNz7WCPwt8CTWefk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314190876469-avs8pf44sd3da4u8pt9s7m09pcq021cg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
