@@ -1,15 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_resume/contact/contact_page.dart';
 import 'package:flutter_app_resume/home/home_page.dart';
+import 'package:flutter_app_resume/home/my_inherited.dart';
 import 'package:flutter_app_resume/project/project_page.dart';
 import 'package:flutter_app_resume/repository/Repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'container_cubit.dart';
 
-class ContainerPage extends StatelessWidget {
+class ContainerPage extends StatefulWidget {
   static Route route() {
     return MaterialPageRoute<void>(builder: (_) => ContainerPage());
+  }
+
+  @override
+  _ContainerPageState createState() => _ContainerPageState();
+}
+
+class _ContainerPageState extends State<ContainerPage>
+    with TickerProviderStateMixin {
+  AnimationController _animationController;
+  Animation<double> _scaleAnimation;
+  final duration = Duration(milliseconds: 300);
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(vsync: this, duration: duration);
+    _scaleAnimation =
+        Tween<double>(begin: 1, end: 0.6).animate(_animationController);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -68,10 +94,32 @@ class ContainerPage extends StatelessWidget {
                 child: Stack(
                   children: [
                     _menuItem(context),
-                    /*   Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: screenSize.width * 0.06),
-                        child: _getWidget(context, state)),*/
+                    AnimatedPositioned(
+                      duration: duration,
+                      top: 0,
+                      bottom: 0,
+                      left: state.isCollapsed ? 0 : 0.6 * screenSize.width,
+                      right: state.isCollapsed ? 0 : -0.6 * screenSize.width,
+                      child: ScaleTransition(
+                        scale: _scaleAnimation,
+                        child: Material(
+                          elevation: 8,
+                          color: Theme.of(context).primaryColor,
+                          child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Theme.of(context).primaryColor,
+                                  Theme.of(context).primaryColorLight
+                                ]),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: screenSize.width * 0.06),
+                              child: MyInherited(
+                                  controller: _animationController,
+                                  child: _getWidget(context, state))),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -83,17 +131,17 @@ class ContainerPage extends StatelessWidget {
   }
 
   Widget _getWidget(context, ContainerState state) {
-    if (state is ContainerHome)
+    if (state.index == 0)
       return HomePage();
-    else if (state is ContainerProject)
+    else if (state.index == 1)
       return ProjectPage();
-    else if (state is ContainerContact)
+    else if (state.index == 2)
       return ContactPage();
     else
       return HomePage();
   }
 
-  Widget _menuItem(context) {
+  Widget _menuItem(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
     return Padding(
@@ -129,10 +177,16 @@ class ContainerPage extends StatelessWidget {
                     ),
                   )),
               SizedBox(
-                height: screenSize.height*0.12,
+                height: screenSize.height * 0.12,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  if (context.read<ContainerCubit>().state.index != 0)
+                    context.read<ContainerCubit>().pageTapped(0);
+
+                  context.read<ContainerCubit>().handleDrawer(
+                      !context.read<ContainerCubit>().state.isCollapsed);
+                },
                 child: Row(
                   children: [
                     Icon(
@@ -154,10 +208,16 @@ class ContainerPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: screenSize.height*0.05,
+                height: screenSize.height * 0.05,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  if (context.read<ContainerCubit>().state.index != 1)
+                    context.read<ContainerCubit>().pageTapped(1);
+
+                  context.read<ContainerCubit>().handleDrawer(
+                      !context.read<ContainerCubit>().state.isCollapsed);
+                },
                 child: Row(
                   children: [
                     Icon(
@@ -179,10 +239,16 @@ class ContainerPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: screenSize.height*0.05,
+                height: screenSize.height * 0.05,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  if (context.read<ContainerCubit>().state.index != 2)
+                    context.read<ContainerCubit>().pageTapped(2);
+
+                  context.read<ContainerCubit>().handleDrawer(
+                      !context.read<ContainerCubit>().state.isCollapsed);
+                },
                 child: Row(
                   children: [
                     Icon(

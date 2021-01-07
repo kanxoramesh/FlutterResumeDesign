@@ -9,14 +9,14 @@ class ContainerCubit extends Cubit<ContainerState> {
   final Repository repository;
 
   pageTapped(int index) {
-    if (index == 0) {
-      emit(ContainerHome());
-    } else if (index == 1) {
-      emit(ContainerProject());
-    } else if (index == 2) {
-      emit(ContainerContact());
-    } else {
-      emit(ContainerHome());
-    }
+    emit(state.copyWith(index: index));
+
   }
+
+  handleDrawer(bool collapseState){
+
+    emit(state.copyWith(isCollapsed: collapseState));
+
+  }
+
 }

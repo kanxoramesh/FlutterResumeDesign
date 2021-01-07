@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/container/container_cubit.dart';
 import 'package:flutter_app_resume/home/cubit/home_cubit.dart';
+import 'package:flutter_app_resume/home/my_inherited.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../home_page.dart';
 
 class TopSection extends StatelessWidget {
   @override
@@ -19,13 +23,38 @@ class TopSection extends StatelessWidget {
                   constraints: BoxConstraints(
                     maxHeight: screenSize.height * 0.45,
                   ),
-
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      InkWell(child: Icon(Icons.table_rows_sharp,size: 25,color: Colors.white,)),
+                      Container(
+                        margin: EdgeInsets.only(top: 16),
+                        child: InkWell(
+                          child: Icon(
+                            Icons.table_rows_sharp,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                          onTap: () {
+                            bool isCollapsed = context
+                                .read<ContainerCubit>()
+                                .state
+                                .isCollapsed;
+                            AnimationController controller =
+                                MyInherited.of(context).controller;
+
+                            if (isCollapsed) {
+                              controller.forward();
+                            } else {
+                              controller.reverse();
+                            }
+                            context
+                                .read<ContainerCubit>()
+                                .handleDrawer(!isCollapsed);
+                          },
+                        ),
+                      ),
                       Expanded(
                         child: Center(
                           child: Column(
@@ -36,7 +65,8 @@ class TopSection extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Hi, I am",
@@ -66,7 +96,8 @@ class TopSection extends StatelessWidget {
                                       ),
                                       Text(state.user.details,
                                           style: TextStyle(
-                                              color: Colors.white, fontSize: 8)),
+                                              color: Colors.white,
+                                              fontSize: 8)),
                                       SizedBox(
                                         height: 20,
                                       ),
@@ -79,8 +110,10 @@ class TopSection extends StatelessWidget {
                                             child: Container(
                                               decoration: BoxDecoration(
                                                   color: Colors.white,
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.elliptical(40, 40))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.elliptical(
+                                                              40, 40))),
                                               width: 80,
                                               height: 30,
                                               child: Center(
@@ -106,8 +139,10 @@ class TopSection extends StatelessWidget {
                                                   border: Border.all(
                                                       color: Colors.white,
                                                       width: 1),
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.elliptical(40, 40))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.elliptical(
+                                                              40, 40))),
                                               width: 80,
                                               height: 30,
                                               child: Center(
