@@ -15,8 +15,10 @@ class StackExperience extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
           decoration: BoxDecoration(
               color: Colors.white,
+
               borderRadius: BorderRadius.all(Radius.elliptical(
                   screenSize.width * 0.5, screenSize.width * 0.5)),
               boxShadow: [
@@ -26,8 +28,8 @@ class StackExperience extends StatelessWidget {
                     blurRadius: 5,
                     offset: Offset(0, 3))
               ]),
-          width: screenSize.width * 0.5,
-          height: screenSize.height * 0.15,
+          width: double.infinity,
+          height: screenSize.height * 0.08,
           child: Row(
             children: [
               ItemView(
@@ -40,12 +42,6 @@ class StackExperience extends StatelessWidget {
                   title: "10+ Projects",
                   description: "Completed",
                   icon: Icons.file_copy,
-                  initColor: 0xffFCCF31,
-                  endColor: 0xffF55555),
-              ItemView(
-                  title: "Support",
-                  description: "Clients",
-                  icon: Icons.support_agent,
                   initColor: 0xffFCCF31,
                   endColor: 0xffF55555),
             ],
@@ -77,7 +73,7 @@ class ItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 46, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,12 +82,12 @@ class ItemView extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient:
                     LinearGradient(colors: [Color(initColor), Color(endColor)]),
-                borderRadius: BorderRadius.all(Radius.circular(40)),
+                borderRadius: BorderRadius.all(Radius.circular(25)),
               ),
-              constraints: BoxConstraints(maxHeight: 40, maxWidth: 40),
-              child: Icon(icon,size: 20,color: Colors.white,),),
+              constraints: BoxConstraints(maxHeight: 25, maxWidth: 25),
+              child: Icon(icon,size: 15,color: Colors.white,),),
           SizedBox(
-            width: 10,
+            width: 8,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -100,7 +96,7 @@ class ItemView extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff394562),
                 ),
@@ -108,7 +104,7 @@ class ItemView extends StatelessWidget {
               Text(
                 description,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 10,
                   fontWeight: FontWeight.normal,
                   color: Color(0xff0D0B4D),
                 ),
