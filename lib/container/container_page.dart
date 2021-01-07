@@ -21,6 +21,8 @@ class _ContainerPageState extends State<ContainerPage>
     with TickerProviderStateMixin {
   AnimationController _animationController;
   Animation<double> _scaleAnimation;
+  Animation<double> _menuScaleAnimation;
+  Animation<Offset> _offsetAnimation;
   final duration = Duration(milliseconds: 300);
 
   @override
@@ -29,6 +31,10 @@ class _ContainerPageState extends State<ContainerPage>
     _animationController = AnimationController(vsync: this, duration: duration);
     _scaleAnimation =
         Tween<double>(begin: 1, end: 0.6).animate(_animationController);
+    _menuScaleAnimation =
+        Tween<double>(begin: 0.5, end: 1).animate(_animationController);
+    _offsetAnimation =
+        Tween<Offset>(begin: Offset(-1,0), end:Offset(0,0)).animate(_animationController);
   }
 
   @override
@@ -98,7 +104,7 @@ class _ContainerPageState extends State<ContainerPage>
                       duration: duration,
                       top: 0,
                       bottom: 0,
-                      left: state.isCollapsed ? 0 : 0.6 * screenSize.width,
+                      left: state.isCollapsed ? 0 : 0.5 * screenSize.width,
                       right: state.isCollapsed ? 0 : -0.6 * screenSize.width,
                       child: ScaleTransition(
                         scale: _scaleAnimation,
@@ -144,135 +150,144 @@ class _ContainerPageState extends State<ContainerPage>
   Widget _menuItem(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
-    return Padding(
-      padding: const EdgeInsets.only(left: 32.0),
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: Container(
-          margin: EdgeInsets.only(top: 32),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              profileImage(context),
-              Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: Text(
-                    "Ramesh Pokhrel",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  )),
-              Container(
-                  margin: EdgeInsets.only(top: 4),
-                  child: Text(
-                    "Android Developer",
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14,
-                    ),
-                  )),
-              SizedBox(
-                height: screenSize.height * 0.12,
-              ),
-              InkWell(
-                onTap: () {
-                  if (context.read<ContainerCubit>().state.index != 0)
-                    context.read<ContainerCubit>().pageTapped(0);
-
-                  context.read<ContainerCubit>().handleDrawer(
-                      !context.read<ContainerCubit>().state.isCollapsed);
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.home,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "Home",
-                      style: TextStyle(
+    return SlideTransition(
+      position: _offsetAnimation,
+      child: ScaleTransition(
+        scale:_menuScaleAnimation,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 32.0),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              margin: EdgeInsets.only(top: 32),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  profileImage(context),
+                  Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Text(
+                        "Ramesh Pokhrel",
+                        style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: screenSize.height * 0.05,
-              ),
-              InkWell(
-                onTap: () {
-                  if (context.read<ContainerCubit>().state.index != 1)
-                    context.read<ContainerCubit>().pageTapped(1);
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      )),
+                  Container(
+                      margin: EdgeInsets.only(top: 4),
+                      child: Text(
+                        "Android Developer",
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.7),
+                          fontWeight: FontWeight.normal,
+                          fontSize: 14,
+                        ),
+                      )),
+                  SizedBox(
+                    height: screenSize.height * 0.12,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      if (context.read<ContainerCubit>().state.index != 0)
+                        context.read<ContainerCubit>().pageTapped(0);
 
-                  context.read<ContainerCubit>().handleDrawer(
-                      !context.read<ContainerCubit>().state.isCollapsed);
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.attach_file,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "Projects",
-                      style: TextStyle(
+                      context.read<ContainerCubit>().handleDrawer(
+                          !context.read<ContainerCubit>().state.isCollapsed);
+                      _animationController.reverse();
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.home,
                           color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: screenSize.height * 0.05,
-              ),
-              InkWell(
-                onTap: () {
-                  if (context.read<ContainerCubit>().state.index != 2)
-                    context.read<ContainerCubit>().pageTapped(2);
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Home",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenSize.height * 0.05,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      if (context.read<ContainerCubit>().state.index != 1)
+                        context.read<ContainerCubit>().pageTapped(1);
 
-                  context.read<ContainerCubit>().handleDrawer(
-                      !context.read<ContainerCubit>().state.isCollapsed);
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.question_answer_rounded,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "Query",
-                      style: TextStyle(
+                      context.read<ContainerCubit>().handleDrawer(
+                          !context.read<ContainerCubit>().state.isCollapsed);
+                      _animationController.reverse();
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.attach_file,
                           color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Projects",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenSize.height * 0.05,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      if (context.read<ContainerCubit>().state.index != 2)
+                        context.read<ContainerCubit>().pageTapped(2);
+
+                      context.read<ContainerCubit>().handleDrawer(
+                          !context.read<ContainerCubit>().state.isCollapsed);
+                      _animationController.reverse();
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.question_answer_rounded,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Query",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 12,
-              ),
-            ],
+            ),
           ),
         ),
       ),
