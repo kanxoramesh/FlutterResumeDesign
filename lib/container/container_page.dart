@@ -111,22 +111,47 @@ class _ContainerPageState extends State<ContainerPage>
                         child: Material(
                           elevation: 8,
                           color: Theme.of(context).primaryColor,
-                          child: Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [
-                                  Theme.of(context).primaryColor,
-                                  Theme.of(context).primaryColorLight
-                                ]),
+                          child: Stack(
+                            children: [
+                              Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(colors: [
+                                      Theme.of(context).primaryColor,
+                                      Theme.of(context).primaryColorLight
+                                    ]),
+                                  ),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: screenSize.width * 0.06),
+                                  child: MyInherited(
+                                    controller: _animationController,
+                                    child: _getWidget(context, state),
+                                  )),
+                              Container(
+                                child: InkWell(
+                                  child: Icon(
+                                    Icons.table_rows_sharp,
+                                    size: 25,
+                                    color: Colors.white,
+                                  ),
+                                  onTap: () {
+                                    bool isCollapsed = context
+                                        .read<ContainerCubit>()
+                                        .state
+                                        .isCollapsed;
+
+                                    if (isCollapsed) {
+                                      _animationController.forward();
+                                    } else {
+                                      _animationController.reverse();
+                                    }
+                                    context
+                                        .read<ContainerCubit>()
+                                        .handleDrawer(!isCollapsed);
+                                  },
+                                ),
                               ),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: screenSize.width * 0.06),
-                              child: MyInherited(
-                                  controller: _animationController,
-                                  child: Stack(
-                                    children: [
-                                      _getWidget(context, state),
-                                    ],
-                                  ))),
+                            ],
+                          ),
                         ),
                       ),
                     ),

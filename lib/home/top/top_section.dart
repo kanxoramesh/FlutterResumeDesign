@@ -28,7 +28,7 @@ class TopSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      /*Container(
                         margin: EdgeInsets.only(top: 16),
                         child: InkWell(
                           child: Icon(
@@ -54,7 +54,7 @@ class TopSection extends StatelessWidget {
                                 .handleDrawer(!isCollapsed);
                           },
                         ),
-                      ),
+                      ),*/
                       Expanded(
                         child: Center(
                           child: Column(
