@@ -121,7 +121,8 @@ class _ContainerPageState extends State<ContainerPage>
                                     ]),
                                   ),
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: screenSize.width * 0.06),
+                                      horizontal:
+                                          _getPadding(state, screenSize)),
                                   child: MyInherited(
                                     controller: _animationController,
                                     child: _getWidget(context, state),
@@ -174,6 +175,13 @@ class _ContainerPageState extends State<ContainerPage>
       return ContactPage();
     else
       return HomePage();
+  }
+
+  double _getPadding(state, screenSize) {
+    if (state.index == 2)
+      return 0;
+    else
+      return screenSize.width * 0.06;
   }
 
   Widget _menuItem(BuildContext context) {
