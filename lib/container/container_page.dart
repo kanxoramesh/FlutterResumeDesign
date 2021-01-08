@@ -30,11 +30,11 @@ class _ContainerPageState extends State<ContainerPage>
     super.initState();
     _animationController = AnimationController(vsync: this, duration: duration);
     _scaleAnimation =
-        Tween<double>(begin: 1, end: 0.6).animate(_animationController);
+        Tween<double>(begin: 1, end: 0.7).animate(_animationController);
     _menuScaleAnimation =
         Tween<double>(begin: 0.5, end: 1).animate(_animationController);
-    _offsetAnimation =
-        Tween<Offset>(begin: Offset(-1,0), end:Offset(0,0)).animate(_animationController);
+    _offsetAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
+        .animate(_animationController);
   }
 
   @override
@@ -122,7 +122,11 @@ class _ContainerPageState extends State<ContainerPage>
                                   horizontal: screenSize.width * 0.06),
                               child: MyInherited(
                                   controller: _animationController,
-                                  child: _getWidget(context, state))),
+                                  child: Stack(
+                                    children: [
+                                      _getWidget(context, state),
+                                    ],
+                                  ))),
                         ),
                       ),
                     ),
@@ -153,7 +157,7 @@ class _ContainerPageState extends State<ContainerPage>
     return SlideTransition(
       position: _offsetAnimation,
       child: ScaleTransition(
-        scale:_menuScaleAnimation,
+        scale: _menuScaleAnimation,
         child: Padding(
           padding: const EdgeInsets.only(left: 32.0),
           child: Align(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_resume/model/specialization.dart';
 import 'package:flutter_app_resume/home/specialization/stack_experience.dart';
+import 'package:flutter_app_resume/Constant.dart';
 class Specialization extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,9 @@ class Specialization extends StatelessWidget {
                               "WHAT I DO",
                               style: TextStyle(
                                   color: Color(0xff498CF4).withAlpha(200),
-                                  letterSpacing: 2,
+                                  letterSpacing: SecondaryTitleSpacing,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 10),
+                                  fontSize: SecondaryTitleSize),
                             ),
                             SizedBox(
                               height: 8,
@@ -38,7 +39,7 @@ class Specialization extends StatelessWidget {
                               "SPECILIZING IN",
                               style: TextStyle(
                                   color: Color(0xff498CF4),
-                                  fontSize: 16,
+                                  fontSize: PrimaryTitleSize,
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
@@ -97,7 +98,7 @@ class Specialization extends StatelessWidget {
                                                     fontSize: 10,
                                                     fontWeight: FontWeight.bold,
                                                     letterSpacing: 1.2,
-                                                    color: Color(0xff394562),
+                                                    color: specialTitleColor,
                                                   ),
                                                 ),
                                               ),
@@ -108,7 +109,7 @@ class Specialization extends StatelessWidget {
                                                   style: TextStyle(
                                                     fontSize: 8,
                                                     fontWeight: FontWeight.normal,
-                                                    color: Color(0xff0D0B4D),
+                                                    color: specialdColor,
                                                   ),
                                                 ),
                                               ),
@@ -119,7 +120,7 @@ class Specialization extends StatelessWidget {
                                                   style: TextStyle(
                                                     fontSize: 8,
                                                     fontWeight: FontWeight.normal,
-                                                    color: Color(0xff0D0B4D),
+                                                    color: specialdColor,
                                                   ),
                                                 ),
                                               ),
