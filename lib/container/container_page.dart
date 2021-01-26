@@ -18,7 +18,7 @@ class ContainerPage extends StatefulWidget {
 }
 
 class _ContainerPageState extends State<ContainerPage>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation<double> _scaleAnimation;
   Animation<double> _menuScaleAnimation;

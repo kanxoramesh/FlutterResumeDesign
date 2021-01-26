@@ -7,6 +7,9 @@ part 'project_state.dart';
 class ProjectCubit extends Cubit<ProjectState> {
   ProjectCubit({this.repository}) : super(ProjectInitial());
   final Repository repository;
+  int _a = 10;
+
+  int get data => _a;
 
   getProjects() {}
 
