@@ -20,9 +20,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![Home Page](/images/screen1.png?)
-![projects](/images/screen2.png?)
-![aimation](/images/screen3.png?)
+
+<div align="center">
+    <img src="/images/screen1.png" width="400px"</img>
+    <img src="/images/screen2.png" width="400px"</img>
+    <img src="/images/screen3.png" width="400px"</img>
+</div>
 
 Best Resume template made with flutter. It uses Flutter Bloc pattern for state management.
 :smile:
