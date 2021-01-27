@@ -24,7 +24,7 @@ class TopSection extends StatelessWidget {
                   flex: 5,
                   child: Container(
                     constraints: BoxConstraints(
-                      maxHeight: screenSize.height * 0.6,
+                      maxHeight: screenSize.height * 0.5,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -191,7 +191,7 @@ class TopSection extends StatelessWidget {
                     ),
                   ):Container(
                     constraints: BoxConstraints(
-                      maxHeight: screenSize.height * 0.6,maxWidth: 160),
+                      maxHeight: screenSize.height * 0.5,maxWidth: 160),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.fill,
