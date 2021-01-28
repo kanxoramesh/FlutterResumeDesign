@@ -54,7 +54,15 @@ abstract class Dimension {
 
   double Title9;
 
+  double verticalMargin;
+  double horizontalMargin;
+  double space1;
+
+  Size itemSize;
+
   Dimension(this.size);
+
+  double itemRadius ;
 }
 
 class MobileDimension extends Dimension {
@@ -95,6 +103,23 @@ class MobileDimension extends Dimension {
 
   @override
   double get topImageMaxWidth => 160;
+
+  @override
+  double get verticalMargin => size.height * 0.05;
+
+  @override
+  double get horizontalMargin => 8;
+
+  @override
+  double get space1 => size.height * 0.04;
+
+  @override
+  // TODO: implement itemRadius
+  double get itemRadius => 20;
+
+  @override
+  // TODO: implement itemSize
+  Size get itemSize => Size(20, 20);
 }
 
 class DesktopDimension extends Dimension {
@@ -122,10 +147,10 @@ class DesktopDimension extends Dimension {
   double get Title7 => 18.0;
 
   @override
-  double get Title8 => 16.0;
+  double get Title8 => 14.0;
 
   @override
-  double get Title9 => 14.0;
+  double get Title9 => 12.0;
 
   @override
   double get topHeight => size.height * 0.9;
@@ -135,4 +160,21 @@ class DesktopDimension extends Dimension {
 
   @override
   double get topImageMaxWidth => size.height * 0.4;
+
+  @override
+  double get verticalMargin => size.height * 0.13;
+
+  @override
+  double get horizontalMargin => size.height * 0.13;
+
+  @override
+  double get space1 => size.height * 0.04;
+
+  @override
+  // TODO: implement itemRadius
+  double get itemRadius => 80;
+
+  @override
+  // TODO: implement itemSize
+  Size get itemSize => Size(70, 70);
 }

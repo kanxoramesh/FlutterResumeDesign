@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_resume/config/palette.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/model/specialization.dart';
 import 'package:flutter_app_resume/screens/home/specialization/stack_experience.dart';
+
 class Specialization extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
+    Dimension dimension = platFormCheck.dimension;
+
     return Wrap(
       children: [
         Container(
-          margin: EdgeInsets.only(bottom: screenSize.height * 0.05),
+          margin: EdgeInsets.only(bottom: dimension.verticalMargin),
           child: Wrap(
             children: [
               Stack(children: [
                 Card(
-                  margin: EdgeInsets.only(top:0,bottom: 40,left: 0,right: 0),
+                  margin:
+                      EdgeInsets.only(top: 0, bottom: 40, left: 0, right: 0),
                   color: Color(0xffFAF9FB),
                   child: Container(
-                    margin: EdgeInsets.symmetric(vertical:screenSize.height * 0.05,horizontal: 8),
+                    margin: EdgeInsets.symmetric(
+                        vertical: dimension.verticalMargin,
+                        horizontal: dimension.horizontalMargin),
                     width: double.infinity,
                     child: Column(
                       children: [
@@ -29,20 +36,20 @@ class Specialization extends StatelessWidget {
                                   color: Color(0xff498CF4).withAlpha(200),
                                   letterSpacing: Palette.SecondaryTitleSpacing,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: Palette.SecondaryTitleSize),
+                                  fontSize: dimension.Title8),
                             ),
                             SizedBox(
                               height: 8,
                             ),
                             Text(
-                              "SPECILIZING IN",
+                              "SPECIALIZING IN",
                               style: TextStyle(
                                   color: Color(0xff498CF4),
-                                  fontSize: Palette.PrimaryTitleSize,
+                                  fontSize: dimension.Title5,
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
-                              height: screenSize.height * 0.04,
+                              height: dimension.space1,
                             ),
                             Container(
                               alignment: Alignment.center,
@@ -52,74 +59,102 @@ class Specialization extends StatelessWidget {
                                 physics: ScrollPhysics(),
                                 crossAxisCount: 2,
                                 scrollDirection: Axis.vertical,
-                                childAspectRatio: 11 / 4,
+                                childAspectRatio:
+                                    platFormCheck.type == PlatformType.MOBILE
+                                        ? 11 / 6
+                                        : 11 / 2,
                                 primary: false,
-                                crossAxisSpacing: 6,
-                                mainAxisSpacing: 6,
+                                crossAxisSpacing:
+                                    platFormCheck.type == PlatformType.MOBILE
+                                        ? 6
+                                        : 16,
+                                mainAxisSpacing:
+                                    platFormCheck.type == PlatformType.MOBILE
+                                        ? 6
+                                        : 16,
                                 shrinkWrap: true,
                                 // Generate 100 widgets that display their index in the List.
                                 children: List.generate(4, (index) {
                                   return Container(
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                             decoration: BoxDecoration(
                                               gradient: LinearGradient(colors: [
-                                                specializations[index].startColor,
+                                                specializations[index]
+                                                    .startColor,
                                                 specializations[index].endCOlor
                                               ]),
                                               image: DecorationImage(
                                                   fit: BoxFit.cover,
                                                   image: AssetImage(
-                                                      specializations[index].icon)),
+                                                      specializations[index]
+                                                          .icon)),
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(20)),
+                                                  Radius.circular(
+                                                      dimension.itemRadius)),
                                             ),
                                             constraints: BoxConstraints(
-                                                maxHeight: 15, maxWidth: 15)),
+                                                maxHeight:
+                                                    dimension.itemSize.height,
+                                                maxWidth:
+                                                    dimension.itemSize.width)),
                                         SizedBox(
-                                          width: 4,
-                                        ),
+                                            width: platFormCheck.type ==
+                                                    PlatformType.MOBILE
+                                                ? 8
+                                                : 30),
                                         Flexible(
                                           child: Column(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                                MainAxisAlignment.start,
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Flexible(
                                                 child: Text(
                                                   specializations[index].title,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                    fontSize: 10,
+                                                    fontSize: dimension.Title7,
                                                     fontWeight: FontWeight.bold,
                                                     letterSpacing: 1.2,
-                                                    color: Palette.specialTitleColor,
+                                                    color: Palette
+                                                        .specialTitleColor,
                                                   ),
                                                 ),
                                               ),
                                               Flexible(
                                                 child: Text(
-                                                  specializations[index].detail1,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  specializations[index]
+                                                      .detail1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.normal,
-                                                    color: Palette.specialdColor,
+                                                    fontSize: dimension.Title9,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color:
+                                                        Palette.specialdColor,
                                                   ),
                                                 ),
                                               ),
                                               Flexible(
                                                 child: Text(
                                                   specializations[index].dtail2,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.normal,
-                                                    color: Palette.specialdColor,
+                                                    fontSize: dimension.Title9,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color:
+                                                        Palette.specialdColor,
                                                   ),
                                                 ),
                                               ),
@@ -138,7 +173,7 @@ class Specialization extends StatelessWidget {
                     ),
                   ),
                 ),
-                StackExperience(screenSize: screenSize)
+                StackExperience(platform: platFormCheck)
               ]),
             ],
           ),

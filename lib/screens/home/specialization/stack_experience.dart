@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 
 class StackExperience extends StatelessWidget {
   const StackExperience({
     Key key,
-    @required this.screenSize,
+    @required this.platform,
   }) : super(key: key);
 
-  final Size screenSize;
+  final PlatFormCheck platform;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,12 @@ class StackExperience extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
               color: Colors.white,
-
               borderRadius: BorderRadius.all(Radius.elliptical(
-                  screenSize.width * 0.5, screenSize.width * 0.5)),
+                  platform.dimension.size.width * 0.5,
+                  platform.dimension.size.width * 0.5)),
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(0.7),
@@ -28,9 +29,16 @@ class StackExperience extends StatelessWidget {
                     blurRadius: 5,
                     offset: Offset(0, 3))
               ]),
-          width: double.infinity,
-          height: screenSize.height * 0.08,
+          width: platform.type == PlatformType.MOBILE
+              ? double.infinity
+              : platform.dimension.size.width * 0.5,
+          height: platform.type == PlatformType.MOBILE
+              ? platform.dimension.size.height * 0.08
+              : platform.dimension.size.height * 0.15,
           child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ItemView(
                   title: "3 Years Job",
@@ -44,6 +52,14 @@ class StackExperience extends StatelessWidget {
                   icon: Icons.file_copy,
                   initColor: 0xffFCCF31,
                   endColor: 0xffF55555),
+              platform.type != PlatformType.MOBILE
+                  ? ItemView(
+                      title: "Support",
+                      description: "Clients",
+                      icon: Icons.support_agent,
+                      initColor: 0xffFCCF31,
+                      endColor: 0xffF55555)
+                  : Container(),
             ],
           ),
         ),
@@ -79,13 +95,18 @@ class ItemView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-              decoration: BoxDecoration(
-                gradient:
-                    LinearGradient(colors: [Color(initColor), Color(endColor)]),
-                borderRadius: BorderRadius.all(Radius.circular(25)),
-              ),
-              constraints: BoxConstraints(maxHeight: 25, maxWidth: 25),
-              child: Icon(icon,size: 15,color: Colors.white,),),
+            decoration: BoxDecoration(
+              gradient:
+                  LinearGradient(colors: [Color(initColor), Color(endColor)]),
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            constraints: BoxConstraints(maxHeight: 25, maxWidth: 25),
+            child: Icon(
+              icon,
+              size: 15,
+              color: Colors.white,
+            ),
+          ),
           SizedBox(
             width: 8,
           ),
