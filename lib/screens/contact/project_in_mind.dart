@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 
 class ProjectMind extends StatelessWidget {
   final Function() scrollToBottom;
@@ -11,18 +12,44 @@ class ProjectMind extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
+    Dimension dimension = platFormCheck.dimension;
 
     return Container(
-      height: screenSize.height * 0.4,
-      width: double.infinity,
+      constraints: BoxConstraints(
+        maxHeight: dimension.size.height * 0.5,
+        maxWidth: double.infinity,
+      ),
       child: Container(
-        padding: EdgeInsets.all(screenSize.height * 0.05),
+        padding: EdgeInsets.all(dimension.verticalMargin),
         color: Color(0xffFAF9FB),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ContactMeView(scrollToBottom: scrollToBottom),
+            ContactMeView(
+                scrollToBottom: scrollToBottom, platFormCheck: platFormCheck),
+            platFormCheck.type != PlatformType.MOBILE
+                ? Expanded(
+                    child: Container(),
+                  )
+                : Container(),
+            platFormCheck.type != PlatformType.MOBILE
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            image: DecorationImage(
+                                image: AssetImage("images/help.jpg"),
+                                fit: BoxFit.cover)),
+                        height: dimension.size.height * 0.2,
+                        width: dimension.size.width * 0.4,
+                      ),
+                    ],
+                  )
+                : Container(),
           ],
         ),
       ),
@@ -32,8 +59,9 @@ class ProjectMind extends StatelessWidget {
 
 class ContactMeView extends StatelessWidget {
   final Function() scrollToBottom;
+  final PlatFormCheck platFormCheck;
 
-  ContactMeView({this.scrollToBottom});
+  ContactMeView({this.scrollToBottom, this.platFormCheck});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +76,7 @@ class ContactMeView extends StatelessWidget {
             style: TextStyle(
                 color: Color(0xff394562),
                 letterSpacing: 0.5,
-                fontSize: 14,
+                fontSize: platFormCheck.dimension.Title4,
                 fontWeight: FontWeight.bold),
           ),
           SizedBox(
@@ -57,9 +85,8 @@ class ContactMeView extends StatelessWidget {
           Text(
             "Tell me about it, submit an RFP, or just send some quick notes.\nYou have come to the right place. Please contact me",
             style: TextStyle(
-                color: Color(0xff394562).withOpacity(0.7), fontSize: 8),
+                color: Color(0xff394562).withOpacity(0.7), fontSize: platFormCheck.dimension.Title8),
           ),
-
           SizedBox(
             height: screenSize.height * 0.02,
           ),
@@ -76,7 +103,7 @@ class ContactMeView extends StatelessWidget {
               child: Center(
                 child: Text(
                   "Connect Me",
-                  style: TextStyle(color: Colors.white,fontSize: 12),
+                  style: TextStyle(color: Colors.white, fontSize: platFormCheck.dimension.Title9),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -85,15 +112,17 @@ class ContactMeView extends StatelessWidget {
           SizedBox(
             height: screenSize.height * 0.02,
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                image: DecorationImage(
-                    image: AssetImage("images/help.jpg"),
-                    fit: BoxFit.cover)),
-            height: screenSize.height * 0.15,
-            width: screenSize.width * 0.6,
-          ),
+          platFormCheck.type == PlatformType.MOBILE
+              ? Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      image: DecorationImage(
+                          image: AssetImage("images/help.jpg"),
+                          fit: BoxFit.cover)),
+                  height: screenSize.height * 0.15,
+                  width: screenSize.width * 0.6,
+                )
+              : Container(),
         ],
       ),
     );

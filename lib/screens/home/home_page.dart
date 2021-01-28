@@ -31,14 +31,14 @@ class HomePage extends StatelessWidget {
           SliverToBoxAdapter(
               child: Container(
                   margin: EdgeInsets.only(
-                    top: screenSize.width * 0.13,
+                    top: screenSize.width * 0.08,
                   ),
                   child: Qualification())),
           SliverToBoxAdapter(
               child: Container(
                   margin: EdgeInsets.only(
-                    top: screenSize.width * 0.13,
-                    bottom: screenSize.height * 0.13,
+                    top: screenSize.width * 0.08,
+                    bottom: screenSize.height * 0.08,
 
                   ),
                   child: ProjectMind())),
