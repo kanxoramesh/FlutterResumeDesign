@@ -25,7 +25,7 @@ List<RecentWork> recentWorks = [
   RecentWork(
     backColor: Color(0xff00317A),
     titleColor: Colors.white,
-    desColor: Color(0xff607EAC),
+    desColor: Colors.white70,
     companyIcon: "images/3c.png",
     companyName: " 3C",
     projTitle: "Dr. Ved: My Personal Astrologer Vedic Astrology",

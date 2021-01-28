@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_resume/config/palette.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/repository/Repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app_resume/screens/project/project_cubit.dart';
@@ -15,7 +16,9 @@ class ProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
+    Dimension dimension = platFormCheck.dimension;
+
     return BlocProvider(
         create: (_) =>
             ProjectCubit(repository: context.read<Repository>())..getProjects(),
@@ -28,8 +31,8 @@ class ProjectPage extends StatelessWidget {
                 SliverToBoxAdapter(
                     child: Container(
                         margin: EdgeInsets.only(
-                            top: screenSize.width * 0.07,
-                            bottom: screenSize.width * 0.03),
+                            top: dimension.size.width * 0.07,
+                            bottom: dimension.size.width * 0.03),
                         child: Container(
                           alignment: Alignment.topCenter,
                           width: double.infinity,
@@ -45,7 +48,7 @@ class ProjectPage extends StatelessWidget {
                                         color: Color(0xffFAF9FB).withAlpha(200),
                                         letterSpacing: Palette.SecondaryTitleSpacing,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: Palette.SecondaryTitleSize),
+                                        fontSize: dimension.Title8),
                                   ),
                                   SizedBox(
                                     height: 8,
@@ -54,7 +57,7 @@ class ProjectPage extends StatelessWidget {
                                     "RECENT WORKS",
                                     style: TextStyle(
                                         color: Color(0xffFAF9FB),
-                                        fontSize: Palette.PrimaryTitleSize,
+                                        fontSize: dimension.Title5,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
@@ -64,7 +67,7 @@ class ProjectPage extends StatelessWidget {
                         ))),
                 SliverPadding(
                   padding: EdgeInsets.only(
-                    top: screenSize.height * 0.04,
+                    top: dimension.size.height * 0.04,
                   ),
                   sliver: SliverStaggeredGrid.count(
                     crossAxisCount: 5,
@@ -72,21 +75,21 @@ class ProjectPage extends StatelessWidget {
                     crossAxisSpacing: 4,
                     children: <Widget>[
                       MouseRegion(
-                        child: BodyWidget(recentWork: recentWorks[0]),
+                        child: BodyWidget(recentWork: recentWorks[0],platFormCheck:platFormCheck),
                       ),
-                      BodyWidget(recentWork: recentWorks[1]),
-                      BodyWidget(recentWork: recentWorks[2]),
-                      BodyWidget(recentWork: recentWorks[4]),
-                      BodyWidget(recentWork: recentWorks[3]),
-                      BodyWidget(recentWork: recentWorks[5]),
+                      BodyWidget(recentWork: recentWorks[1],platFormCheck:platFormCheck),
+                      BodyWidget(recentWork: recentWorks[2],platFormCheck:platFormCheck),
+                      BodyWidget(recentWork: recentWorks[4],platFormCheck:platFormCheck),
+                      BodyWidget(recentWork: recentWorks[3],platFormCheck:platFormCheck),
+                      BodyWidget(recentWork: recentWorks[5],platFormCheck:platFormCheck),
                     ],
                     staggeredTiles: <StaggeredTile>[
-                      StaggeredTile.extent(3, screenSize.width * 0.7),
-                      StaggeredTile.extent(2, screenSize.width * 0.7),
-                      StaggeredTile.extent(5, screenSize.width * 0.5),
-                      StaggeredTile.extent(3, screenSize.width * 0.7),
-                      StaggeredTile.extent(2, screenSize.width * 0.7),
-                      StaggeredTile.extent(5, screenSize.width * 0.5),
+                      StaggeredTile.extent(3, dimension.size.width * 0.7),
+                      StaggeredTile.extent(2, dimension.size.width * 0.7),
+                      StaggeredTile.extent(5, dimension.size.width * 0.5),
+                      StaggeredTile.extent(3, dimension.size.width * 0.7),
+                      StaggeredTile.extent(2, dimension.size.width * 0.7),
+                      StaggeredTile.extent(5, dimension.size.width * 0.5),
                     ],
                   ),
                 ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 
 import 'package:flutter_app_resume/model/RecentWork.dart';
 
 class BodyWidget extends StatefulWidget {
   final RecentWork recentWork;
-  BodyWidget({this.recentWork});
+  final PlatFormCheck platFormCheck;
+  BodyWidget({this.recentWork,this.platFormCheck});
   
 
   @override
@@ -22,7 +24,6 @@ class _BodyWidgetState extends State<BodyWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
     return MouseRegion(
       onEnter: (event) {
         hoverActivation(true);
@@ -45,7 +46,7 @@ class _BodyWidgetState extends State<BodyWidget> with TickerProviderStateMixin {
             alignment: Alignment.topCenter,
             child: OverflowBox(
               child: Container(
-                padding: EdgeInsets.all(4),
+                padding: EdgeInsets.all(widget.platFormCheck.dimension.horizontalMargin/2),
                 child: new LayoutBuilder(builder:
                     (BuildContext context, BoxConstraints constraints) {
                   return Column(
@@ -68,28 +69,28 @@ class _BodyWidgetState extends State<BodyWidget> with TickerProviderStateMixin {
                         ],
                       ),
                       SizedBox(
-                        height: screenSize.height * 0.018,
+                        height: widget.platFormCheck.dimension.size.height * 0.018,
                       ),
                       Text(
                         widget.recentWork.projTitle,
                         style: TextStyle(
                             color: widget.recentWork.titleColor,
-                            fontSize: 14,
+                            fontSize:  widget.platFormCheck.dimension.Title6,
                             letterSpacing: 0.5,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: screenSize.height * 0.007,
+                        height:  widget.platFormCheck.dimension.size.height * 0.007,
                       ),
                       Text(
                         widget.recentWork.projDesc,
                         style: TextStyle(
                             color: widget.recentWork.desColor,
-                            fontSize: 10,
+                            fontSize: widget.platFormCheck.dimension.Title8,
                             fontWeight: FontWeight.normal),
                       ),
                       SizedBox(
-                        height: screenSize.height * 0.005,
+                        height:  widget.platFormCheck.dimension.size.height * 0.005,
                       ),
                       Flexible(
                         child: Center(
