@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/screens/container/container_cubit.dart';
 import 'package:flutter_app_resume/screens/home/cubit/home_cubit.dart';
 import 'package:flutter_app_resume/screens/home/my_inherited.dart';
@@ -10,9 +11,7 @@ import '../home_page.dart';
 class TopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    print("width: ${screenSize.width}");
-    print("height: ${screenSize.height}");
+    Dimension dimension = PlatFormCheck.of(context).dimension;
     return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) => previous.user != current.user,
       builder: (context, state) {
@@ -26,40 +25,14 @@ class TopSection extends StatelessWidget {
                   flex: 5,
                   child: Container(
                     constraints: BoxConstraints(
-                      maxHeight:kIsWeb? screenSize.height * 0.9:screenSize.height * 0.5,
+                      maxHeight: dimension.topHeight,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        /*Container(
-                          margin: EdgeInsets.only(top: 16),
-                          child: InkWell(
-                            child: Icon(
-                              Icons.table_rows_sharp,
-                              size: 25,
-                              color: Colors.white,
-                            ),
-                            onTap: () {
-                              bool isCollapsed = context
-                                  .read<ContainerCubit>()
-                                  .state
-                                  .isCollapsed;
-                              AnimationController controller =
-                                  MyInherited.of(context).controller;
 
-                              if (isCollapsed) {
-                                controller.forward();
-                              } else {
-                                controller.reverse();
-                              }
-                              context
-                                  .read<ContainerCubit>()
-                                  .handleDrawer(!isCollapsed);
-                            },
-                          ),
-                        ),*/
                         Expanded(
                           child: Center(
                             child: Column(
@@ -76,7 +49,7 @@ class TopSection extends StatelessWidget {
                                         Text(
                                           "Hi, I am",
                                           style: TextStyle(
-                                              color: Colors.white, fontSize: 8),
+                                              color: Colors.white, fontSize: dimension.Title9),
                                         ),
                                         SizedBox(
                                           height: 3,
@@ -85,7 +58,7 @@ class TopSection extends StatelessWidget {
                                           state.user.name,
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 24,
+                                              fontSize: dimension.Title1,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(
@@ -94,7 +67,7 @@ class TopSection extends StatelessWidget {
                                         Text(state.user.designation,
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 12,
+                                                fontSize: dimension.Title7,
                                                 fontWeight: FontWeight.bold)),
                                         SizedBox(
                                           height: 8,
@@ -102,7 +75,7 @@ class TopSection extends StatelessWidget {
                                         Text(state.user.details,
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 8)),
+                                                fontSize: dimension.Title9)),
                                         SizedBox(
                                           height: 20,
                                         ),
@@ -119,14 +92,17 @@ class TopSection extends StatelessWidget {
                                                         BorderRadius.all(
                                                             Radius.elliptical(
                                                                 40, 40))),
-                                                width: screenSize.width*0.2,
-                                                height: 30,
+                                                width:
+                                                    dimension.buttonSize.width,
+                                                height:
+                                                    dimension.buttonSize.height,
                                                 child: Center(
                                                   child: Text(
                                                     "Hire Me",
                                                     style: TextStyle(
-                                                        color: Color(0xff437DF7),
-                                                        fontSize: 12),
+                                                        color:
+                                                            Color(0xff437DF7),
+                                                        fontSize: dimension.Title7),
                                                     textAlign: TextAlign.center,
                                                   ),
                                                 ),
@@ -148,14 +124,16 @@ class TopSection extends StatelessWidget {
                                                         BorderRadius.all(
                                                             Radius.elliptical(
                                                                 40, 40))),
-                                                width: screenSize.width*0.2,
-                                                height: 30,
+                                                width:
+                                                    dimension.buttonSize.width,
+                                                height:
+                                                    dimension.buttonSize.height,
                                                 child: Center(
                                                   child: Text(
                                                     "Get CV",
                                                     style: TextStyle(
                                                         color: Colors.white,
-                                                        fontSize: 12),
+                                                        fontSize: dimension.Title7),
                                                     textAlign: TextAlign.center,
                                                   ),
                                                 ),
@@ -181,16 +159,11 @@ class TopSection extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 4,
-                  child: kIsWeb? Container(
-                    constraints: BoxConstraints(//475/625
-                        maxHeight: screenSize.height * 0.9,maxWidth:screenSize.height*0.35 ),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(state.user.profile))),
-                  ):Container(
+                  child: Container(
                     constraints: BoxConstraints(
-                      maxHeight: screenSize.height * 0.5,maxWidth: 160),
+                        //475/625
+                        maxHeight: dimension.topHeight,
+                        maxWidth: dimension.topImageMaxWidth),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.fill,
