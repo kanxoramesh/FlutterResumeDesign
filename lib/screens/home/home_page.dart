@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_resume/home/cubit/home_cubit.dart';
-import 'package:flutter_app_resume/home/specialization/special_skills.dart';
-import 'package:flutter_app_resume/home/specialization/specialization.dart';
+import 'package:flutter_app_resume/screens/home/cubit/home_cubit.dart';
+import 'package:flutter_app_resume/screens/home/specialization/special_skills.dart';
+import 'package:flutter_app_resume/screens/home/specialization/specialization.dart';
 import 'package:flutter_app_resume/repository/Repository.dart';
-import 'package:flutter_app_resume/home/top/top_section.dart';
-import 'package:flutter_app_resume/home/specialization/qualification.dart';
+import 'package:flutter_app_resume/screens/home/top/top_section.dart';
+import 'package:flutter_app_resume/screens/home/specialization/qualification.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_app_resume/contact/project_in_mind.dart';
+import 'package:flutter_app_resume/screens/contact/project_in_mind.dart';
 
 class HomePage extends StatelessWidget {
   @override

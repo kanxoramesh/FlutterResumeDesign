@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/palette.dart';
 import 'package:flutter_app_resume/model/specialization.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:flutter_app_resume/Constant.dart';
 
 class SpecialSkills extends StatefulWidget {
   @override
@@ -26,9 +26,9 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                 "EXPERTISE",
                 style: TextStyle(
                     color: Color(0xffFAF9FB).withAlpha(200),
-                    letterSpacing: SecondaryTitleSpacing,
+                    letterSpacing: Palette.SecondaryTitleSpacing,
                     fontWeight: FontWeight.normal,
-                    fontSize: SecondaryTitleSize),
+                    fontSize: Palette.SecondaryTitleSize),
               ),
               SizedBox(
                 height: 8,
@@ -37,7 +37,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                 "SPECIAL SKILLS",
                 style: TextStyle(
                     color: Color(0xffFAF9FB),
-                    fontSize: PrimaryTitleSize,
+                    fontSize: Palette.PrimaryTitleSize,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -75,7 +75,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1.5,
-                                color: specialTitleColor,
+                                color: Palette.specialTitleColor,
                               ),
                             )
                           ],
@@ -88,7 +88,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                           style: TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.normal,
-                            color: specialdColor,
+                            color: Palette.specialdColor,
                           ),
                         ),
                         Text(
@@ -96,7 +96,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                           style: TextStyle(
                             fontSize: 8,
                             fontWeight: FontWeight.normal,
-                            color: specialdColor,
+                            color: Palette.specialdColor,
                           ),
                         ),
                       ],

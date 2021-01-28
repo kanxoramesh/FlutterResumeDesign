@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/palette.dart';
 import 'package:flutter_app_resume/repository/Repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_app_resume/project/project_cubit.dart';
+import 'package:flutter_app_resume/screens/project/project_cubit.dart';
 import 'package:flutter_app_resume/model/RecentWork.dart';
-import 'package:flutter_app_resume/project/portfolio.dart';
+import 'package:flutter_app_resume/screens/project/portfolio.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../Constant.dart';
 
 class ProjectPage extends StatelessWidget {
   static Route route() {
@@ -43,9 +43,9 @@ class ProjectPage extends StatelessWidget {
                                     "MY PORTFOLIO",
                                     style: TextStyle(
                                         color: Color(0xffFAF9FB).withAlpha(200),
-                                        letterSpacing: SecondaryTitleSpacing,
+                                        letterSpacing: Palette.SecondaryTitleSpacing,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: SecondaryTitleSize),
+                                        fontSize: Palette.SecondaryTitleSize),
                                   ),
                                   SizedBox(
                                     height: 8,
@@ -54,7 +54,7 @@ class ProjectPage extends StatelessWidget {
                                     "RECENT WORKS",
                                     style: TextStyle(
                                         color: Color(0xffFAF9FB),
-                                        fontSize: PrimaryTitleSize,
+                                        fontSize: Palette.PrimaryTitleSize,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],

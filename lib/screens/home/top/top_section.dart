@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_resume/container/container_cubit.dart';
-import 'package:flutter_app_resume/home/cubit/home_cubit.dart';
-import 'package:flutter_app_resume/home/my_inherited.dart';
+import 'package:flutter_app_resume/screens/container/container_cubit.dart';
+import 'package:flutter_app_resume/screens/home/cubit/home_cubit.dart';
+import 'package:flutter_app_resume/screens/home/my_inherited.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -11,6 +11,8 @@ class TopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    print("width: ${screenSize.width}");
+    print("height: ${screenSize.height}");
     return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) => previous.user != current.user,
       builder: (context, state) {
@@ -24,7 +26,7 @@ class TopSection extends StatelessWidget {
                   flex: 5,
                   child: Container(
                     constraints: BoxConstraints(
-                      maxHeight: screenSize.height * 0.5,
+                      maxHeight:kIsWeb? screenSize.height * 0.9:screenSize.height * 0.5,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -179,16 +181,13 @@ class TopSection extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 4,
-                  child: kIsWeb? AspectRatio(
-                    aspectRatio:screenSize.width * 0.6/screenSize.height * 0.6,
-                    child: Container(
-                      constraints: BoxConstraints(
-                          maxHeight: screenSize.height * 0.6,),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(state.user.profile))),
-                    ),
+                  child: kIsWeb? Container(
+                    constraints: BoxConstraints(//475/625
+                        maxHeight: screenSize.height * 0.9,maxWidth:screenSize.height*0.35 ),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(state.user.profile))),
                   ):Container(
                     constraints: BoxConstraints(
                       maxHeight: screenSize.height * 0.5,maxWidth: 160),

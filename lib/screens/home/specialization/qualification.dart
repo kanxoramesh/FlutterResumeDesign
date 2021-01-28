@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_resume/config/palette.dart';
 import 'package:flutter_app_resume/model/Subject.dart';
 
-import '../../Constant.dart';
 
 class Qualification extends StatelessWidget {
   @override
@@ -25,9 +25,9 @@ class Qualification extends StatelessWidget {
                         "QUALIFICATION",
                         style: TextStyle(
                             color: Color(0xff498CF4).withAlpha(200),
-                            letterSpacing: SecondaryTitleSpacing,
+                            letterSpacing: Palette.SecondaryTitleSpacing,
                             fontWeight: FontWeight.normal,
-                            fontSize: SecondaryTitleSize),
+                            fontSize: Palette.SecondaryTitleSize),
                       ),
                       SizedBox(
                         height: 8,
@@ -36,7 +36,7 @@ class Qualification extends StatelessWidget {
                         "AWESOME JOURNEY",
                         style: TextStyle(
                             color: Color(0xff498CF4),
-                            fontSize: PrimaryTitleSize,
+                            fontSize: Palette.PrimaryTitleSize,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(

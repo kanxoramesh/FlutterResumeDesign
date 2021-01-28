@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_resume/contact/contact_page.dart';
-import 'package:flutter_app_resume/home/home_page.dart';
-import 'package:flutter_app_resume/home/my_inherited.dart';
-import 'package:flutter_app_resume/project/project_page.dart';
+import 'package:flutter_app_resume/screens/contact/contact_page.dart';
+import 'package:flutter_app_resume/screens/home/home_page.dart';
+import 'package:flutter_app_resume/screens/home/my_inherited.dart';
+import 'package:flutter_app_resume/screens/project/project_page.dart';
 import 'package:flutter_app_resume/repository/Repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

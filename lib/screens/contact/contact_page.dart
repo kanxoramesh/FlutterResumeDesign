@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_resume/repository/Repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_app_resume/contact/cubit/contact_cubit.dart';
+import 'package:flutter_app_resume/screens/contact/cubit/contact_cubit.dart';
 
 class ContactPage extends StatefulWidget {
   @override
