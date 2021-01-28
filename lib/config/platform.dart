@@ -111,7 +111,7 @@ class MobileDimension extends Dimension {
   double get horizontalMargin => 8;
 
   @override
-  double get space1 => size.height * 0.04;
+  double get space1 => size.height * 0.03;
 
   @override
   // TODO: implement itemRadius

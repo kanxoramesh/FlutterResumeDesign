@@ -46,16 +46,16 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                 height: dimension.space1,
               ),
               Container(
-                width: platFormCheck.type == PlatformType.MOBILE
-                    ? dimension.size.width * 0.7
-                    : dimension.size.width * 0.4,
-                height: platFormCheck.type == PlatformType.MOBILE
-                    ? dimension.size.width * 0.3
-                    : dimension.size.height * 0.25,
+                constraints:BoxConstraints(
+                  maxWidth: platFormCheck.type == PlatformType.MOBILE
+                      ? dimension.size.width * 0.8
+                      : dimension.size.width * 0.4,
+
+                ) ,
                 child: Card(
                   color: Color(0xffFAF9FB),
                   child: Container(
-                    margin: EdgeInsets.all(dimension.space1),
+                    margin: EdgeInsets.all(dimension.space1 ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
