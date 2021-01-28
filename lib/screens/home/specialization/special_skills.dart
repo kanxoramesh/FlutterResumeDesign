@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_resume/config/palette.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/model/specialization.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -11,7 +12,8 @@ class SpecialSkills extends StatefulWidget {
 class _SpecialSkillsState extends State<SpecialSkills> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
+    Dimension dimension = platFormCheck.dimension;
 
     return Container(
       alignment: Alignment.topCenter,
@@ -28,7 +30,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                     color: Color(0xffFAF9FB).withAlpha(200),
                     letterSpacing: Palette.SecondaryTitleSpacing,
                     fontWeight: FontWeight.normal,
-                    fontSize: Palette.SecondaryTitleSize),
+                    fontSize: dimension.Title8),
               ),
               SizedBox(
                 height: 8,
@@ -37,19 +39,23 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                 "SPECIAL SKILLS",
                 style: TextStyle(
                     color: Color(0xffFAF9FB),
-                    fontSize: Palette.PrimaryTitleSize,
+                    fontSize: dimension.Title5,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: screenSize.height * 0.01,
+                height: dimension.space1,
               ),
               Container(
-                width: screenSize.width * 0.7,
-                height: screenSize.height * 0.17,
+                width: platFormCheck.type == PlatformType.MOBILE
+                    ? dimension.size.width * 0.7
+                    : dimension.size.width * 0.4,
+                height: platFormCheck.type == PlatformType.MOBILE
+                    ? dimension.size.width * 0.3
+                    : dimension.size.height * 0.25,
                 child: Card(
                   color: Color(0xffFAF9FB),
                   child: Container(
-                    margin: EdgeInsets.all(screenSize.height * 0.02),
+                    margin: EdgeInsets.all(dimension.space1),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -64,15 +70,15 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                                 style: TextStyle(
                                     color: Color(0xff498CF4), fontSize: 12),
                               ),
-                              progressColor:Color(0xff498CF4),
+                              progressColor: Color(0xff498CF4),
                             ),
                             SizedBox(
-                              width: screenSize.width * 0.01,
+                              width: dimension.size.width * 0.01,
                             ),
                             Text(
                               specializations[0].title,
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: dimension.Title7,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1.5,
                                 color: Palette.specialTitleColor,
@@ -81,12 +87,12 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                           ],
                         ),
                         SizedBox(
-                          height: screenSize.height * 0.01,
+                          height: dimension.size.height * 0.01,
                         ),
                         Text(
-                           specializations[0].detail1,
+                          specializations[0].detail1,
                           style: TextStyle(
-                            fontSize: 8,
+                            fontSize: dimension.Title9,
                             fontWeight: FontWeight.normal,
                             color: Palette.specialdColor,
                           ),
@@ -94,7 +100,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                         Text(
                           specializations[0].dtail2,
                           style: TextStyle(
-                            fontSize: 8,
+                            fontSize: dimension.Title9,
                             fontWeight: FontWeight.normal,
                             color: Palette.specialdColor,
                           ),

@@ -41,7 +41,7 @@ class StackExperience extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ItemView(
-                  title: "3 Years Job",
+                  title: "3+ Years Job",
                   description: "Experience",
                   icon: Icons.auto_awesome,
                   initColor: 0xffFCCF31,
@@ -54,7 +54,7 @@ class StackExperience extends StatelessWidget {
                   endColor: 0xffF55555),
               platform.type != PlatformType.MOBILE
                   ? ItemView(
-                      title: "Support",
+                      title: "10+ Happy",
                       description: "Clients",
                       icon: Icons.support_agent,
                       initColor: 0xffFCCF31,
