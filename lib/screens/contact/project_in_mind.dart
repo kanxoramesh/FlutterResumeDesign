@@ -12,12 +12,11 @@ class ProjectMind extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
-    Dimension dimension = platFormCheck.dimension;
+    PlatFormCheck dimension = PlatFormCheck.of(context);
 
     return Container(
       constraints: BoxConstraints(
-        maxHeight: dimension.size.height * 0.5,
+        maxHeight: dimension.type==PlatformType.MOBILE?dimension.screenSize.height * 0.5:dimension.screenSize.height * 0.6,
         maxWidth: double.infinity,
       ),
       child: Container(
@@ -27,8 +26,8 @@ class ProjectMind extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ContactMeView(
-                scrollToBottom: scrollToBottom, platFormCheck: platFormCheck),
-            platFormCheck.type != PlatformType.MOBILE
+                scrollToBottom: scrollToBottom, platFormCheck: dimension),
+            dimension.type != PlatformType.MOBILE
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -39,8 +38,8 @@ class ProjectMind extends StatelessWidget {
                             image: DecorationImage(
                                 image: AssetImage("images/help.jpg"),
                                 fit: BoxFit.cover)),
-                        height: dimension.size.height * 0.2,
-                        width: dimension.size.width * 0.4,
+                        height: dimension.screenSize.height * 0.2,
+                        width: dimension.screenSize.width * 0.4,
                       ),
                     ],
                   )
@@ -70,21 +69,17 @@ class ContactMeView extends StatelessWidget {
             children: [
               Text(
                 "Have a Project On Your Mind",
-                style: TextStyle(
+                style: Theme.of(context).textTheme.headline6.copyWith(
                     color: Color(0xff394562),
                     letterSpacing: 0.5,
-                    fontSize: platFormCheck.dimension.Title6,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: screenSize.height * 0.01,
               ),
-              Expanded(
-                child: Text(
-                  "Tell me about it, submit an RFP, or just send some quick notes.You have come to the right place. Please contact me", style: TextStyle(
-                    color: Color(0xff394562).withOpacity(0.7),
-                    fontSize: platFormCheck.dimension.Title8,
-                  ),
+              Text(
+                "Tell me about it, submit an RFP, or just send some quick notes.You have come to the right place. Please contact me", style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  color: Color(0xff394562).withOpacity(0.7),
                 ),
               ),
 
@@ -104,9 +99,7 @@ class ContactMeView extends StatelessWidget {
                   child: Center(
                     child: Text(
                       "Connect Me",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: platFormCheck.dimension.Title9),
+                      style: Theme.of(context).textTheme.bodyText2,
                       textAlign: TextAlign.center,
                     ),
                   ),

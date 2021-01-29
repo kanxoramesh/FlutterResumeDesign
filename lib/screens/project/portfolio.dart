@@ -46,7 +46,7 @@ class _BodyWidgetState extends State<BodyWidget> with TickerProviderStateMixin {
             alignment: Alignment.topCenter,
             child: OverflowBox(
               child: Container(
-                padding: EdgeInsets.all(widget.platFormCheck.dimension.horizontalMargin/2),
+                padding: EdgeInsets.all(widget.platFormCheck.horizontalMargin/2),
                 child: new LayoutBuilder(builder:
                     (BuildContext context, BoxConstraints constraints) {
                   return Column(
@@ -69,28 +69,25 @@ class _BodyWidgetState extends State<BodyWidget> with TickerProviderStateMixin {
                         ],
                       ),
                       SizedBox(
-                        height: widget.platFormCheck.dimension.size.height * 0.018,
+                        height: widget.platFormCheck.screenSize.height * 0.018,
                       ),
                       Text(
                         widget.recentWork.projTitle,
-                        style: TextStyle(
+                        style: Theme.of(context).textTheme.headline6.copyWith(
                             color: widget.recentWork.titleColor,
-                            fontSize:  widget.platFormCheck.dimension.Title6,
-                            letterSpacing: 0.5,
-                            fontWeight: FontWeight.bold),
+                            letterSpacing: 0.5,)
                       ),
                       SizedBox(
-                        height:  widget.platFormCheck.dimension.size.height * 0.007,
+                        height:  widget.platFormCheck.screenSize.height * 0.007,
                       ),
                       Text(
                         widget.recentWork.projDesc,
-                        style: TextStyle(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                             color: widget.recentWork.desColor,
-                            fontSize: widget.platFormCheck.dimension.Title8,
                             fontWeight: FontWeight.normal),
                       ),
                       SizedBox(
-                        height:  widget.platFormCheck.dimension.size.height * 0.005,
+                        height:  widget.platFormCheck.screenSize.height * 0.005,
                       ),
                       Flexible(
                         child: Center(

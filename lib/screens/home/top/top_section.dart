@@ -11,7 +11,7 @@ import '../home_page.dart';
 class TopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Dimension dimension = PlatFormCheck.of(context).dimension;
+    PlatFormCheck dimension = PlatFormCheck.of(context);
     return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) => previous.user != current.user,
       builder: (context, state) {
@@ -32,7 +32,6 @@ class TopSection extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Expanded(
                           child: Center(
                             child: Column(
@@ -48,34 +47,33 @@ class TopSection extends StatelessWidget {
                                       children: [
                                         Text(
                                           "Hi, I am",
-                                          style: TextStyle(
-                                              color: Colors.white, fontSize: dimension.Title9),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
                                         ),
                                         SizedBox(
                                           height: 3,
                                         ),
                                         Text(
                                           state.user.name,
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: dimension.Title1,
-                                              fontWeight: FontWeight.bold),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1,
                                         ),
                                         SizedBox(
                                           height: 3,
                                         ),
                                         Text(state.user.designation,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: dimension.Title7,
-                                                fontWeight: FontWeight.bold)),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle1),
                                         SizedBox(
                                           height: 8,
                                         ),
                                         Text(state.user.details,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: dimension.Title9)),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText1),
                                         SizedBox(
                                           height: 20,
                                         ),
@@ -99,10 +97,12 @@ class TopSection extends StatelessWidget {
                                                 child: Center(
                                                   child: Text(
                                                     "Hire Me",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xff437DF7),
-                                                        fontSize: dimension.Title7),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .subtitle2
+                                                        .copyWith(
+                                                            color: Color(
+                                                                0xff437DF7)),
                                                     textAlign: TextAlign.center,
                                                   ),
                                                 ),
@@ -131,9 +131,9 @@ class TopSection extends StatelessWidget {
                                                 child: Center(
                                                   child: Text(
                                                     "Get CV",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: dimension.Title7),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .subtitle2,
                                                     textAlign: TextAlign.center,
                                                   ),
                                                 ),

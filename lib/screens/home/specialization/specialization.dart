@@ -7,8 +7,7 @@ import 'package:flutter_app_resume/screens/home/specialization/stack_experience.
 class Specialization extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
-    Dimension dimension = platFormCheck.dimension;
+    PlatFormCheck dimension = PlatFormCheck.of(context);
 
     return Wrap(
       children: [
@@ -32,21 +31,18 @@ class Specialization extends StatelessWidget {
                           children: [
                             Text(
                               "WHAT I DO",
-                              style: TextStyle(
+                              style: Theme.of(context).textTheme.bodyText1.copyWith(
                                   color: Color(0xff498CF4).withAlpha(200),
                                   letterSpacing: Palette.SecondaryTitleSpacing,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: dimension.Title8),
+                                  fontWeight: FontWeight.normal,),
                             ),
                             SizedBox(
                               height: 8,
                             ),
                             Text(
                               "SPECIALIZING IN",
-                              style: TextStyle(
-                                  color: Color(0xff498CF4),
-                                  fontSize: dimension.Title5,
-                                  fontWeight: FontWeight.bold),
+                              style: Theme.of(context).textTheme.headline5.copyWith(
+                                  color: Color(0xff498CF4)),
                             ),
                             SizedBox(
                               height: dimension.space1,
@@ -60,16 +56,16 @@ class Specialization extends StatelessWidget {
                                 crossAxisCount: 2,
                                 scrollDirection: Axis.vertical,
                                 childAspectRatio:
-                                    platFormCheck.type == PlatformType.MOBILE
+                                    dimension.type == PlatformType.MOBILE
                                         ? 11 / 6
                                         : 11 / 2,
                                 primary: false,
                                 crossAxisSpacing:
-                                    platFormCheck.type == PlatformType.MOBILE
+                                    dimension.type == PlatformType.MOBILE
                                         ? 6
                                         : 16,
                                 mainAxisSpacing:
-                                    platFormCheck.type == PlatformType.MOBILE
+                                    dimension.type == PlatformType.MOBILE
                                         ? 6
                                         : 16,
                                 shrinkWrap: true,
@@ -104,7 +100,7 @@ class Specialization extends StatelessWidget {
                                                 maxWidth:
                                                     dimension.itemSize.width)),
                                         SizedBox(
-                                            width: platFormCheck.type ==
+                                            width: dimension.type ==
                                                     PlatformType.MOBILE
                                                 ? 8
                                                 : 30),
@@ -120,8 +116,7 @@ class Specialization extends StatelessWidget {
                                                   specializations[index].title,
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                    fontSize: dimension.Title7,
+                                                  style: Theme.of(context).textTheme.subtitle1.copyWith(
                                                     fontWeight: FontWeight.bold,
                                                     letterSpacing: 1.2,
                                                     color: Palette
@@ -135,8 +130,7 @@ class Specialization extends StatelessWidget {
                                                       .detail1,
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                    fontSize: dimension.Title9,
+                                                  style: Theme.of(context).textTheme.bodyText2.copyWith(
                                                     fontWeight:
                                                         FontWeight.normal,
                                                     color:
@@ -149,8 +143,7 @@ class Specialization extends StatelessWidget {
                                                   specializations[index].dtail2,
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                    fontSize: dimension.Title9,
+                                                  style: Theme.of(context).textTheme.bodyText2.copyWith(
                                                     fontWeight:
                                                         FontWeight.normal,
                                                     color:
@@ -173,7 +166,7 @@ class Specialization extends StatelessWidget {
                     ),
                   ),
                 ),
-                StackExperience(platform: platFormCheck)
+                StackExperience(platform: dimension)
               ]),
             ],
           ),

@@ -9,172 +9,78 @@ enum PlatformType {
 
 class PlatFormCheck {
   PlatformType _type;
-  Dimension _dimension;
+  Size _screenSize;
 
-  PlatformType get type => _type;
+  double _topHeight;
+  double _topImageMaxWidth;
+  Size _buttonSize;
+  double _verticalMargin;
+  double _horizontalMargin;
+  double _space1;
 
-  Dimension get dimension => _dimension;
+  Size _itemSize;
+  double _itemRadius;
 
   PlatFormCheck.of(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    if (size.width < 800) {
+    _screenSize = MediaQuery.of(context).size;
+    if (_screenSize.width < 800) {
       _type = PlatformType.MOBILE;
-      _dimension = MobileDimension(size);
-    } else if (size.width >= 800 && size.width < 1200) {
+
+      _topHeight = _screenSize.height * 0.5;
+      _topImageMaxWidth = 160;
+      _buttonSize = Size(_screenSize.width * 0.2, 30);
+      _verticalMargin = _screenSize.height * 0.05;
+      _horizontalMargin = 8;
+      _space1 = _screenSize.height * 0.03;
+
+      _itemSize = Size(20, 20);
+      _itemRadius = 20;
+    } else if (_screenSize.width >= 800 && _screenSize.width < 1200) {
       _type = PlatformType.TABLET;
-      _dimension = DesktopDimension(size);
     } else {
       _type = PlatformType.DESKTOP;
-      _dimension = DesktopDimension(size);
+
+      _topHeight = _screenSize.height * 0.9;
+      _topImageMaxWidth = _screenSize.height * 0.4;
+      _buttonSize = Size(_screenSize.width * 0.15, _screenSize.width * 0.05);
+      _verticalMargin = _screenSize.height * 0.13;
+      _horizontalMargin = _screenSize.height * 0.13;
+      _space1 = _screenSize.height * 0.04;
+
+      _itemSize = Size(70, 70);
+      _itemRadius = 80;
     }
     //calculate Dimension
   }
-}
 
-abstract class Dimension {
-  final Size size;
-  double topHeight;
-  double topImageMaxWidth;
-  Size buttonSize;
-  double Title1;
-
-  double Title2;
-
-  double Title3;
-
-  double Title4;
-
-  double Title5;
-
-  double Title6;
-
-  double Title7;
-
-  double Title8;
-
-  double Title9;
-
-  double verticalMargin;
-  double horizontalMargin;
-  double space1;
-
-  Size itemSize;
-
-  Dimension(this.size);
-
-  double itemRadius ;
-}
-
-class MobileDimension extends Dimension {
-  MobileDimension(Size size) : super(size);
+  PlatformType get type => _type;
 
   @override
-  double get Title1 => 24.0;
+  double get topHeight => _topHeight;
 
   @override
-  double get Title2 => 22.0;
+  Size get screenSize => _screenSize;
 
   @override
-  double get Title3 => 20.0;
+  Size get buttonSize => _buttonSize;
 
   @override
-  double get Title4 => 18.0;
+  double get topImageMaxWidth => _topImageMaxWidth;
 
   @override
-  double get Title5 => 16.0;
+  double get verticalMargin => _verticalMargin;
 
   @override
-  double get Title6 => 14.0;
+  double get horizontalMargin => _horizontalMargin;
 
   @override
-  double get Title7 => 12.0;
-
-  @override
-  double get Title8 => 10.0;
-
-  @override
-  double get Title9 => 8.0;
-
-  @override
-  double get topHeight => size.height * 0.5;
-
-  @override
-  Size get buttonSize => Size(size.width * 0.2, 30);
-
-  @override
-  double get topImageMaxWidth => 160;
-
-  @override
-  double get verticalMargin => size.height * 0.05;
-
-  @override
-  double get horizontalMargin => 8;
-
-  @override
-  double get space1 => size.height * 0.03;
+  double get space1 => _space1;
 
   @override
   // TODO: implement itemRadius
-  double get itemRadius => 20;
+  double get itemRadius => _itemRadius;
 
   @override
   // TODO: implement itemSize
-  Size get itemSize => Size(20, 20);
-}
-
-class DesktopDimension extends Dimension {
-  DesktopDimension(Size size) : super(size);
-
-  @override
-  double get Title1 => 40.0;
-
-  @override
-  double get Title2 => 36.0;
-
-  @override
-  double get Title3 => 32.0;
-
-  @override
-  double get Title4 => 28.0;
-
-  @override
-  double get Title5 => 24.0;
-
-  @override
-  double get Title6 => 20.0;
-
-  @override
-  double get Title7 => 18.0;
-
-  @override
-  double get Title8 => 14.0;
-
-  @override
-  double get Title9 => 12.0;
-
-  @override
-  double get topHeight => size.height * 0.9;
-
-  @override
-  Size get buttonSize => Size(size.width * 0.15, size.width * 0.05);
-
-  @override
-  double get topImageMaxWidth => size.height * 0.4;
-
-  @override
-  double get verticalMargin => size.height * 0.13;
-
-  @override
-  double get horizontalMargin => size.height * 0.13;
-
-  @override
-  double get space1 => size.height * 0.04;
-
-  @override
-  // TODO: implement itemRadius
-  double get itemRadius => 80;
-
-  @override
-  // TODO: implement itemSize
-  Size get itemSize => Size(70, 70);
+  Size get itemSize => _itemSize;
 }

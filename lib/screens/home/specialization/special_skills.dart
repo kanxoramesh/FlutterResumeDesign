@@ -12,8 +12,7 @@ class SpecialSkills extends StatefulWidget {
 class _SpecialSkillsState extends State<SpecialSkills> {
   @override
   Widget build(BuildContext context) {
-    PlatFormCheck platFormCheck = PlatFormCheck.of(context);
-    Dimension dimension = platFormCheck.dimension;
+    PlatFormCheck dimension = PlatFormCheck.of(context);
 
     return Container(
       alignment: Alignment.topCenter,
@@ -26,36 +25,32 @@ class _SpecialSkillsState extends State<SpecialSkills> {
             children: [
               Text(
                 "EXPERTISE",
-                style: TextStyle(
-                    color: Color(0xffFAF9FB).withAlpha(200),
-                    letterSpacing: Palette.SecondaryTitleSpacing,
-                    fontWeight: FontWeight.normal,
-                    fontSize: dimension.Title8),
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
+                      color: Color(0xffFAF9FB).withAlpha(200),
+                      letterSpacing: Palette.SecondaryTitleSpacing,
+                      fontWeight: FontWeight.normal,
+                    ),
               ),
               SizedBox(
                 height: 8,
               ),
               Text(
                 "SPECIAL SKILLS",
-                style: TextStyle(
-                    color: Color(0xffFAF9FB),
-                    fontSize: dimension.Title5,
-                    fontWeight: FontWeight.bold),
+                style:  Theme.of(context).textTheme.headline5,
               ),
               SizedBox(
                 height: dimension.space1,
               ),
               Container(
-                constraints:BoxConstraints(
-                  maxWidth: platFormCheck.type == PlatformType.MOBILE
-                      ? dimension.size.width * 0.8
-                      : dimension.size.width * 0.4,
-
-                ) ,
+                constraints: BoxConstraints(
+                  maxWidth: dimension.type == PlatformType.MOBILE
+                      ? dimension.screenSize.width * 0.8
+                      : dimension.screenSize.width * 0.4,
+                ),
                 child: Card(
                   color: Color(0xffFAF9FB),
                   child: Container(
-                    margin: EdgeInsets.all(dimension.space1 ),
+                    margin: EdgeInsets.all(dimension.space1),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -73,12 +68,11 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                               progressColor: Color(0xff498CF4),
                             ),
                             SizedBox(
-                              width: dimension.size.width * 0.01,
+                              width: dimension.screenSize.width * 0.01,
                             ),
                             Text(
                               specializations[0].title,
-                              style: TextStyle(
-                                fontSize: dimension.Title7,
+                              style:Theme.of(context).textTheme.subtitle1.copyWith(
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1.5,
                                 color: Palette.specialTitleColor,
@@ -87,20 +81,18 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                           ],
                         ),
                         SizedBox(
-                          height: dimension.size.height * 0.01,
+                          height: dimension.screenSize.height * 0.01,
                         ),
                         Text(
                           specializations[0].detail1,
-                          style: TextStyle(
-                            fontSize: dimension.Title9,
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.normal,
                             color: Palette.specialdColor,
                           ),
                         ),
                         Text(
                           specializations[0].dtail2,
-                          style: TextStyle(
-                            fontSize: dimension.Title9,
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.normal,
                             color: Palette.specialdColor,
                           ),

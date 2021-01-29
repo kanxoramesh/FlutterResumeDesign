@@ -20,8 +20,8 @@ class StackExperience extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.elliptical(
-                  platform.dimension.size.width * 0.5,
-                  platform.dimension.size.width * 0.5)),
+                  platform.screenSize.width * 0.5,
+                  platform.screenSize.width * 0.5)),
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(0.7),
@@ -31,10 +31,10 @@ class StackExperience extends StatelessWidget {
               ]),
           width: platform.type == PlatformType.MOBILE
               ? double.infinity
-              : platform.dimension.size.width * 0.5,
+              : platform.screenSize.width * 0.5,
           height: platform.type == PlatformType.MOBILE
-              ? platform.dimension.size.height * 0.08
-              : platform.dimension.size.height * 0.15,
+              ? platform.screenSize.height * 0.08
+              : platform.screenSize.height * 0.15,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_resume/config/palette.dart';
+import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/model/Subject.dart';
-
 
 class Qualification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    PlatFormCheck dimension = PlatFormCheck.of(context);
+
     return Container(
       child: Wrap(
         children: [
@@ -15,7 +16,7 @@ class Qualification extends StatelessWidget {
             color: Color(0xffFAF9FB),
             child: Container(
               margin: EdgeInsets.symmetric(
-                  vertical: screenSize.height * 0.05, horizontal: 8),
+                  vertical: dimension.screenSize.height * 0.05, horizontal: 8),
               width: double.infinity,
               child: Wrap(
                 children: [
@@ -23,24 +24,23 @@ class Qualification extends StatelessWidget {
                     children: [
                       Text(
                         "QUALIFICATION",
-                        style: TextStyle(
-                            color: Color(0xff498CF4).withAlpha(200),
-                            letterSpacing: Palette.SecondaryTitleSpacing,
-                            fontWeight: FontWeight.normal,
-                            fontSize: Palette.SecondaryTitleSize),
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              color: Color(0xff498CF4).withAlpha(200),
+                              letterSpacing: Palette.SecondaryTitleSpacing,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
                       SizedBox(
                         height: 8,
                       ),
                       Text(
                         "AWESOME JOURNEY",
-                        style: TextStyle(
+                        style: Theme.of(context).textTheme.headline5.copyWith(
                             color: Color(0xff498CF4),
-                            fontSize: Palette.PrimaryTitleSize,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: screenSize.height * 0.04,
+                        height: dimension.screenSize.height * 0.04,
                       ),
                       Container(
                           alignment: Alignment.topCenter,
