@@ -10,7 +10,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../theme.dart';
 
-
 class ProjectPage extends StatelessWidget {
   static Route route() {
     return MaterialPageRoute<void>(builder: (_) => ProjectPage());
@@ -45,19 +44,27 @@ class ProjectPage extends StatelessWidget {
                                 children: [
                                   Text(
                                     "MY PORTFOLIO",
-                                    style: Theme.of(context).textTheme.bodyText2.copyWith(
-                                        color: Color(0xffFAF9FB).withAlpha(200),
-                                        letterSpacing: SecondaryTitleSpacing,
-                                        fontWeight: FontWeight.normal),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2
+                                        .copyWith(
+                                            color: Color(0xffFAF9FB)
+                                                .withAlpha(200),
+                                            letterSpacing:
+                                                SecondaryTitleSpacing,
+                                            fontWeight: FontWeight.normal),
                                   ),
                                   SizedBox(
                                     height: 8,
                                   ),
                                   Text(
                                     "RECENT WORKS",
-                                    style: Theme.of(context).textTheme.headline5.copyWith(
-                                        color: Color(0xffFAF9FB),
-                                        fontWeight: FontWeight.bold),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5
+                                        .copyWith(
+                                            color: Color(0xffFAF9FB),
+                                            fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               )
@@ -74,21 +81,38 @@ class ProjectPage extends StatelessWidget {
                     crossAxisSpacing: 4,
                     children: <Widget>[
                       MouseRegion(
-                        child: BodyWidget(recentWork: recentWorks[0],platFormCheck:dimension),
+                        child: BodyWidget(
+                            recentWork: recentWorks[0],
+                            platFormCheck: dimension),
                       ),
-                      BodyWidget(recentWork: recentWorks[1],platFormCheck:dimension),
-                      BodyWidget(recentWork: recentWorks[2],platFormCheck:dimension),
-                      BodyWidget(recentWork: recentWorks[4],platFormCheck:dimension),
-                      BodyWidget(recentWork: recentWorks[3],platFormCheck:dimension),
-                      BodyWidget(recentWork: recentWorks[5],platFormCheck:dimension),
+                      MouseRegion(
+                          child: BodyWidget(
+                              recentWork: recentWorks[1],
+                              platFormCheck: dimension)),
+                      MouseRegion(
+                          child: BodyWidget(
+                              recentWork: recentWorks[2],
+                              platFormCheck: dimension)),
+                      MouseRegion(
+                          child: BodyWidget(
+                              recentWork: recentWorks[4],
+                              platFormCheck: dimension)),
+                      MouseRegion(
+                          child: BodyWidget(
+                              recentWork: recentWorks[3],
+                              platFormCheck: dimension)),
+                      MouseRegion(
+                          child: BodyWidget(
+                              recentWork: recentWorks[5],
+                              platFormCheck: dimension)),
                     ],
                     staggeredTiles: <StaggeredTile>[
-                      StaggeredTile.extent(3, dimension.screenSize.width * 0.7),
-                      StaggeredTile.extent(2, dimension.screenSize.width * 0.7),
-                      StaggeredTile.extent(5, dimension.screenSize.width * 0.5),
-                      StaggeredTile.extent(3, dimension.screenSize.width * 0.7),
-                      StaggeredTile.extent(2, dimension.screenSize.width * 0.7),
-                      StaggeredTile.extent(5, dimension.screenSize.width * 0.5),
+                      StaggeredTile.extent(3, dimension.screenSize.width * 0.5),
+                      StaggeredTile.extent(2, dimension.screenSize.width * 0.5),
+                      StaggeredTile.extent(5, dimension.screenSize.width * 0.4),
+                      StaggeredTile.extent(3, dimension.screenSize.width * 0.5),
+                      StaggeredTile.extent(2, dimension.screenSize.width * 0.5),
+                      StaggeredTile.extent(5, dimension.screenSize.width * 0.4),
                     ],
                   ),
                 ),
