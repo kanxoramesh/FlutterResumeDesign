@@ -428,7 +428,7 @@ class _ConnectMeState extends State<ContactPage> {
                                               flex: 6,
                                               child: Container(
                                                 child: TextField(
-                                                  style: TextStyle(color: specialdColor),
+                                                  style: TextStyle(color: specialColor),
 
                                                   controller: nameController,
                                                   decoration: InputDecoration(
@@ -457,7 +457,7 @@ class _ConnectMeState extends State<ContactPage> {
                                               flex: 6,
                                               child: Container(
                                                 child: TextField(
-                                                  style: TextStyle(color: specialdColor),
+                                                  style: TextStyle(color: specialColor),
                                                   controller: emailController,
                                                   decoration: InputDecoration(
                                                     border: OutlineInputBorder(
@@ -483,7 +483,7 @@ class _ConnectMeState extends State<ContactPage> {
                                         Container(
                                           margin: EdgeInsets.only(top: 16),
                                           child: TextField(
-                                            style: TextStyle(color: specialdColor),
+                                            style: TextStyle(color: specialColor),
                                             controller: subjectController,
                                             decoration: InputDecoration(
                                               border: OutlineInputBorder(
@@ -504,7 +504,7 @@ class _ConnectMeState extends State<ContactPage> {
                                         Container(
                                           margin: EdgeInsets.only(top: 16),
                                           child: TextField(
-                                            style: TextStyle(color: specialdColor),
+                                            style: TextStyle(color: specialColor),
                                             controller: messageController,
                                             maxLines: 5,
                                             decoration: InputDecoration(

@@ -89,14 +89,14 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                           specializations[0].detail1,
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.normal,
-                            color: specialdColor,
+                            color: specialColor,
                           ),
                         ),
                         Text(
                           specializations[0].dtail2,
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.normal,
-                            color: specialdColor,
+                            color: specialColor,
                           ),
                         ),
                       ],

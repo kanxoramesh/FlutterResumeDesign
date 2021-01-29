@@ -12,17 +12,16 @@ const primaryColorLight = Color(0xFF7DA4F6);
 const resumePrimary = const Color(0xff437DF7);
 const buttonColor = Color(0xFF442B2D);
 
- const LinearGradient scaffoldGradient = LinearGradient(
-    colors: [const Color(0xff437DF7), const Color(0xff51A4EE)]);
+const LinearGradient scaffoldGradient =
+    LinearGradient(colors: [const Color(0xff437DF7), const Color(0xff51A4EE)]);
 
- const double PrimaryTitleSize = 16;
- const Color specialTitleColor = Color(0xff394562);
- const Color specialdColor = Color(0xff0D0B4D);
- const double SecondaryTitleSpacing = 2;
+const double PrimaryTitleSize = 16;
+const Color specialTitleColor = Color(0xff394562);
+Color specialColor = Color(0xff394562).withOpacity(0.7);
+const double SecondaryTitleSpacing = 2;
 const SurfaceWhite = Color(0xFFFFFBFA);
 const BackgroundWhite = Colors.white;
 const ErrorRed = Colors.red;
-
 
 ThemeData buildResumeTheme(BuildContext context) {
   // var type = PlatFormCheck.of(context).type;
@@ -88,36 +87,35 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
 }
 
 TextTheme _buildTextTheme(TextTheme base) {
-
   return base
       .copyWith(
-    headline1: base.headline1
-        .copyWith(fontSize: 40.0, fontWeight: FontWeight.bold),
-    headline2: base.headline2
-        .copyWith(fontSize: 36.0, fontWeight: FontWeight.bold),
-    headline3: base.headline3
-        .copyWith(fontSize: 32.0, fontWeight: FontWeight.bold),
-    headline4: base.headline4
-        .copyWith(fontSize: 28.0, fontWeight: FontWeight.bold),
-    headline5: base.headline5
-        .copyWith(fontSize: 24.0, fontWeight: FontWeight.bold),
-    headline6: base.headline6
-        .copyWith(fontSize: 20.0, fontWeight: FontWeight.bold),
-    subtitle1: base.subtitle1.copyWith(
-      fontSize: 18.0,
-    ),
-    bodyText1: base.bodyText1.copyWith(
-      fontSize: 14.0,
-    ),
-    bodyText2: base.bodyText2.copyWith(
-      fontSize: 12.0,
-    ),
-  )
+        headline1: base.headline1
+            .copyWith(fontSize: 40.0, fontWeight: FontWeight.bold),
+        headline2: base.headline2
+            .copyWith(fontSize: 36.0, fontWeight: FontWeight.bold),
+        headline3: base.headline3
+            .copyWith(fontSize: 32.0, fontWeight: FontWeight.bold),
+        headline4: base.headline4
+            .copyWith(fontSize: 28.0, fontWeight: FontWeight.bold),
+        headline5: base.headline5
+            .copyWith(fontSize: 24.0, fontWeight: FontWeight.bold),
+        headline6: base.headline6
+            .copyWith(fontSize: 20.0, fontWeight: FontWeight.bold),
+        subtitle1: base.subtitle1.copyWith(
+          fontSize: 18.0,
+        ),
+        bodyText1: base.bodyText1.copyWith(
+          fontSize: 14.0,
+        ),
+        bodyText2: base.bodyText2.copyWith(
+          fontSize: 12.0,
+        ),
+      )
       .apply(
-    fontFamily: 'Rubik',
-    displayColor: Color(0xffFAF9FB),
-    bodyColor: Color(0xffFAF9FB),
-  );
+        fontFamily: 'Rubik',
+        displayColor: Color(0xffFAF9FB),
+        bodyColor: Color(0xffFAF9FB),
+      );
 }
 
 TextTheme _buildMobileTextTheme(TextTheme base) {

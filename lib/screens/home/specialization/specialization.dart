@@ -59,16 +59,16 @@ class Specialization extends StatelessWidget {
                                 scrollDirection: Axis.vertical,
                                 childAspectRatio:
                                     dimension.type == PlatformType.MOBILE
-                                        ? 11 / 6
+                                        ? 11 / 8
                                         : 11 / 2,
                                 primary: false,
                                 crossAxisSpacing:
                                     dimension.type == PlatformType.MOBILE
-                                        ? 6
+                                        ? 4
                                         : 16,
                                 mainAxisSpacing:
                                     dimension.type == PlatformType.MOBILE
-                                        ? 6
+                                        ? 4
                                         : 16,
                                 shrinkWrap: true,
                                 // Generate 100 widgets that display their index in the List.
@@ -104,9 +104,9 @@ class Specialization extends StatelessWidget {
                                         SizedBox(
                                             width: dimension.type ==
                                                     PlatformType.MOBILE
-                                                ? 8
+                                                ? 6
                                                 : 30),
-                                        Flexible(
+                                        Expanded(
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -114,41 +114,41 @@ class Specialization extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Flexible(
+                                                flex:1,
                                                 child: Text(
                                                   specializations[index].title,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                                                  style: Theme.of(context).textTheme.subtitle2.copyWith(
                                                     fontWeight: FontWeight.bold,
                                                     letterSpacing: 1.2,
                                                     color: specialTitleColor,
                                                   ),
                                                 ),
                                               ),
+                                              SizedBox(height: 4,),
                                               Flexible(
+                                                flex:1,
                                                 child: Text(
                                                   specializations[index]
                                                       .detail1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
                                                   style: Theme.of(context).textTheme.bodyText2.copyWith(
                                                     fontWeight:
                                                         FontWeight.normal,
                                                     color:
-                                                        specialdColor,
+                                                        specialColor,
                                                   ),
                                                 ),
                                               ),
+                                              SizedBox(height: 2,),
+
                                               Flexible(
+                                                flex:1,
                                                 child: Text(
                                                   specializations[index].dtail2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
                                                   style: Theme.of(context).textTheme.bodyText2.copyWith(
                                                     fontWeight:
                                                         FontWeight.normal,
                                                     color:
-                                                        specialdColor,
+                                                        specialColor,
                                                   ),
                                                 ),
                                               ),
