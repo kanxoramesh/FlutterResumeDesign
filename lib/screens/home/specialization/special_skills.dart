@@ -4,6 +4,8 @@ import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/model/specialization.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../../../theme.dart';
+
 class SpecialSkills extends StatefulWidget {
   @override
   _SpecialSkillsState createState() => _SpecialSkillsState();
@@ -27,7 +29,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                 "EXPERTISE",
                 style: Theme.of(context).textTheme.bodyText1.copyWith(
                       color: Color(0xffFAF9FB).withAlpha(200),
-                      letterSpacing: Palette.SecondaryTitleSpacing,
+                      letterSpacing: SecondaryTitleSpacing,
                       fontWeight: FontWeight.normal,
                     ),
               ),
@@ -75,7 +77,7 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                               style:Theme.of(context).textTheme.subtitle1.copyWith(
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1.5,
-                                color: Palette.specialTitleColor,
+                                color: specialTitleColor,
                               ),
                             )
                           ],
@@ -87,14 +89,14 @@ class _SpecialSkillsState extends State<SpecialSkills> {
                           specializations[0].detail1,
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.normal,
-                            color: Palette.specialdColor,
+                            color: specialdColor,
                           ),
                         ),
                         Text(
                           specializations[0].dtail2,
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.normal,
-                            color: Palette.specialdColor,
+                            color: specialdColor,
                           ),
                         ),
                       ],

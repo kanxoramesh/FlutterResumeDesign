@@ -12,10 +12,17 @@ const primaryColorLight = Color(0xFF7DA4F6);
 const resumePrimary = const Color(0xff437DF7);
 const buttonColor = Color(0xFF442B2D);
 
-const kShrineErrorRed = Color(0xFFC5032B);
+ const LinearGradient scaffoldGradient = LinearGradient(
+    colors: [const Color(0xff437DF7), const Color(0xff51A4EE)]);
 
-const kShrineSurfaceWhite = Color(0xFFFFFBFA);
-const kShrineBackgroundWhite = Colors.white;
+ const double PrimaryTitleSize = 16;
+ const Color specialTitleColor = Color(0xff394562);
+ const Color specialdColor = Color(0xff0D0B4D);
+ const double SecondaryTitleSpacing = 2;
+const SurfaceWhite = Color(0xFFFFFBFA);
+const BackgroundWhite = Colors.white;
+const ErrorRed = Colors.red;
+
 
 ThemeData buildResumeTheme(BuildContext context) {
   // var type = PlatFormCheck.of(context).type;
@@ -32,9 +39,9 @@ ThemeData buildResumeTheme(BuildContext context) {
       ),
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    cardColor: kShrineBackgroundWhite,
+    cardColor: BackgroundWhite,
     textSelectionColor: accentColor,
-    errorColor: kShrineErrorRed,
+    errorColor: ErrorRed,
     buttonTheme: base.buttonTheme.copyWith(
       buttonColor: buttonColor,
       colorScheme: base.colorScheme.copyWith(

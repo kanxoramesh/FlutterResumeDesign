@@ -3,6 +3,8 @@ import 'package:flutter_app_resume/config/palette.dart';
 import 'package:flutter_app_resume/config/platform.dart';
 import 'package:flutter_app_resume/model/Subject.dart';
 
+import '../../../theme.dart';
+
 class Qualification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class Qualification extends StatelessWidget {
                         "QUALIFICATION",
                         style: Theme.of(context).textTheme.bodyText1.copyWith(
                               color: Color(0xff498CF4).withAlpha(200),
-                              letterSpacing: Palette.SecondaryTitleSpacing,
+                              letterSpacing: SecondaryTitleSpacing,
                               fontWeight: FontWeight.normal,
                             ),
                       ),

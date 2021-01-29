@@ -8,6 +8,8 @@ import 'package:flutter_app_resume/model/RecentWork.dart';
 import 'package:flutter_app_resume/screens/project/portfolio.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../../theme.dart';
+
 
 class ProjectPage extends StatelessWidget {
   static Route route() {
@@ -45,7 +47,7 @@ class ProjectPage extends StatelessWidget {
                                     "MY PORTFOLIO",
                                     style: Theme.of(context).textTheme.bodyText2.copyWith(
                                         color: Color(0xffFAF9FB).withAlpha(200),
-                                        letterSpacing: Palette.SecondaryTitleSpacing,
+                                        letterSpacing: SecondaryTitleSpacing,
                                         fontWeight: FontWeight.normal),
                                   ),
                                   SizedBox(
